@@ -1,4 +1,5 @@
-#To deploy Systemd lab on CentOS7 
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
 MACHINES = {
   :"kernel-update" => {
               :box_name => "centos/7",
