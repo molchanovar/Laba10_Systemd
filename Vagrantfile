@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vim: set ft=ruby :
 MACHINES = {
-  :"kernel-update" => {
+  :"systemd-lab" => {
               :box_name => "centos/7",
               :cpus => 2,
               :memory => 1024,
@@ -12,7 +12,6 @@ MACHINES = {
 
 Vagrant.configure("2") do |config|
   MACHINES.each do |boxname, boxconfig|
-    config.vm.synced_folder ".", "/vagrant", disabled: true
     config.vm.define boxname do |box|
       box.vm.box = boxconfig[:box_name]
       box.vm.host_name = boxname.to_s
@@ -30,6 +29,7 @@ Vagrant.configure("2") do |config|
         v.memory = boxconfig[:memory]
         v.cpus = boxconfig[:cpus]
       end
+      config.vm.provision "shell", path: "task1/provision1.sh"
     end
   end
 end
