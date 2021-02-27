@@ -1,12 +1,16 @@
 #!/bin/bash
 
-cp /vagrant/provision/watchlog /etc/sysconfig/
-cp /vagrant/provision/watchlog.log /var/log/
-cp /vagrant/provision/watchlog.sh /opt/ 
+# Копируем файлы
+cp /vagrant/task1/watchlog /etc/sysconfig/
+cp /vagrant/task1/watchlog.log /var/log/
+cp /vagrant/task1/watchlog.sh /opt/ 
 chmod +x /opt/watchlog.sh
-cp /vagrant/provision/watchlog.service /etc/systemd/system/
-cp /vagrant/provision/watchlog.timer /etc/systemd/system/
+# решение проблемы с /bin/bash^M: bad interpreter: No such file or directory
+sed -i -e 's/\r$//' /opt/watchlog.sh
+cp /vagrant/task1/watchlog.service /etc/systemd/system/
+cp /vagrant/task1/watchlog.timer /etc/systemd/system/
 
+# Запуск сервиса 
 systemctl daemon-reload
 systemctl enable watchlog.timer
 systemctl enable watchlog.service
