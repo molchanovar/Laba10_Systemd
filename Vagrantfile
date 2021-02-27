@@ -30,6 +30,8 @@ Vagrant.configure("2") do |config|
         v.cpus = boxconfig[:cpus]
       end
       config.vm.provision "shell", path: "task1/provision1.sh"
+      config.vm.provision "shell", path: "task2/provision2.sh"
+      config.vm.provision "shell", path: "task3/provision3.sh"
     end
   end
 end
