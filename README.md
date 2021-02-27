@@ -28,3 +28,16 @@ Restart=on-failure
 WantedBy=multi-user.target
  ```
  
+ 
+
+Task 3: 
+Несколько инстансов для Apache Server (порты 80 и 8080)
+```
+ss -tulpn 
+
+Netid  State      Recv-Q Send-Q                                      Local Address:Port                                                     Peer Address:Port
+tcp    LISTEN     0      128                                                  [::]:8080                                                             [::]:*                   users:(("httpd",pid=28630,fd=4),("httpd",pid=28629,fd=4),("httpd",pid=28628,fd=4),("httpd",pid=28627,fd=4),("httpd",pid=28626,fd=4),("httpd",pid=28625,fd=4))              
+tcp    LISTEN     0      128                                                  [::]:80                                                               [::]:*                   users:(("httpd",pid=28577,fd=4),("httpd",pid=28576,fd=4),("httpd",pid=28575,fd=4),("httpd",pid=28574,fd=4),("httpd",pid=28573,fd=4),("httpd",pid=28572,fd=4))              
+```
+
+
