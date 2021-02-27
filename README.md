@@ -28,9 +28,32 @@ Restart=on-failure
 WantedBy=multi-user.target
  ```
  
- 
+ ### Results 
+ #### Task 1:
+ ```
+ [root@systemd-lab conf]# systemctl status watchlog.timer
+ watchlog.timer - Run watchlog script every 30 second
+     Loaded: loaded (/etc/systemd/system/watchlog.timer; enabled; vendor preset: disabled)
+    Active: active (waiting) since Fri 2021-02-26 11:10:13 UTC; 1s ago 
 
-Task 3: 
+Feb 26 11:10:13 systemd-lab systemd[1]: Started Run watchlog script every 30 second. 
+ ```
+ 
+ #### Task 2:
+```
+[root@systemd-lab conf]# systemctl status spawn-fcgi
+spawn-fcgi.service - Spawn-fcgi startup service
+  Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; vendor preset: disabled)
+  Active: active (running) since Thu 2021-02-25 22:19:27 UTC; 12h ago
+Main PID: 21313 (php-cgi
+   CGroup: /system.slice/spawn-fcgi.service
+   ├─21314 /usr/bin/php-cgi
+   ├─21315 /usr/bin/php-cgi
+Feb 25 22:19:27 systemd-lab systemd[1]: Started Spawn-fcgi startup service by Otus.
+```
+
+
+ #### Task 3: 
 Несколько инстансов для Apache Server (порты 80 и 8080)
 ```
 ss -tulpn 
