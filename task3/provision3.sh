@@ -7,9 +7,9 @@ echo "OPTIONS=-f conf/httpd-first.conf" > /etc/sysconfig/httpd-first
 echo "OPTIONS=-f conf/httpd-second.conf" > /etc/sysconfig/httpd-second
 cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-first.conf
 cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-second.conf
-mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.OLD
-sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd-second.conf
-sed -i '/ServerRoot "\/etc\/httpd"/a PidFile \/var\/run\/httpd-second.pid' /etc/httpd/conf/httpd-second.conf
+mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.old.conf
+sed -i -e 's/Listen 80/Listen 8080/; /ServerRoot "\/etc\/httpd"/a PidFile \/var\/run\/httpd-second.pid' /etc/httpd/conf/httpd-second.conf
+
 
 # Запуск
 systemctl disable httpd
